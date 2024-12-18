@@ -1,7 +1,7 @@
-pub mod commands;
 pub mod cli;
+pub mod commands;
 
-use cli::{Commands};
+use cli::Commands;
 
 fn main() {
     let cli = cli::parse_args();
