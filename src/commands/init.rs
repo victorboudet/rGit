@@ -40,6 +40,7 @@ fn create_rgit_dir() {
     match force_create_dir(".rgit") {
         Ok(_) => {
             force_create_dir(".rgit/objects").expect("Failed to create objects directory");
+            force_create_file(".rgit/HEAD").expect("Failed to create HEAD file");
             println!("rGit directory created successfully.");
         }
         Err(err) => {
