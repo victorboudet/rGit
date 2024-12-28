@@ -39,8 +39,14 @@ fn force_create_file(name: &str) -> Result<(), io::Error> {
 fn create_rgit_dir() {
     match force_create_dir(".rgit") {
         Ok(_) => {
-            force_create_dir(".rgit/objects").expect("Failed to create objects directory");
             force_create_file(".rgit/HEAD").expect("Failed to create HEAD file");
+            force_create_dir(".rgit/config").expect("Failed to create config file");
+            force_create_dir(".rgit/objects").expect("Failed to create objects directory");
+            force_create_dir(".rgit/objects/info").expect("Failed to create info file");
+            force_create_dir(".rgit/objects/pack").expect("Failed to create pack file");
+            force_create_dir(".rgit/refs").expect("Failed to create refs directory");
+            force_create_dir(".rgit/refs/heads").expect("Failed to create heads directory");
+            force_create_dir(".rgit/refs/tags").expect("Failed to create tags directory");
             println!("rGit directory created successfully.");
         }
         Err(err) => {
